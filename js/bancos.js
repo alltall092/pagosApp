@@ -4,8 +4,8 @@ fetch('https://app-6954283e-dbd9-4887-91b6-5d9d8b91f020.cleverapps.io/bank')
 .then(response => response.json())
 .then(data => {
     const imageRow = document.getElementById('image-row');
-
-    data.Data.forEach(banco => {
+console.log(data)
+    data.forEach(banco => {
         const imageCol = document.createElement('div');
         imageCol.classList.add('col-lg-4', 'col-md-6', 'mb-4');
 
