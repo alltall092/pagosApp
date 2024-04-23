@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.11.6/css/jquery.dataTables.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <title>BCCR  - SUGEF</title>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+  <!-- font awesome style -->
+  <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
+
+  <!-- Custom styles for this template -->
+  <link href="css/style.css" rel="stylesheet" />
+  <!-- responsive style -->
+  
+  <link href="css/responsive.css" rel="stylesheet" />
+  <!-- slider stylesheet -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+  <!-- font awesome style -->
+  <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
+
+  <!-- Custom styles for this template -->
+  <link href="css/style.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="css/responsive.css" rel="stylesheet" />
+  <style>
+    /* Estilos personalizados para la tabla */
+    .custom-table {
+      background-color: #f8f9fa; /* Color de fondo */
+      border-radius: 10px; /* Bordes redondeados */
+      overflow: hidden; /* Evita desbordamiento de contenido */
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); 
+      margin: 3px;/* Sombra */
+      padding: 3px;
+    }
+
+    /* Estilos para las filas pares */
+    .custom-table tbody tr:nth-child(even) {
+      background-color: #f0f0f0; /* Color de fondo para filas pares */
+    }
+
+    /* Estilos para las filas al pasar el cursor */
+    .custom-table tbody tr:hover {
+      background-color: #e9ecef; /* Color de fondo al pasar el cursor */
+    }
+  
+
+    /* Estilos para las celdas */
+    .custom-table tbody td {
+      border-top: none; /* Elimina el borde superior de las celdas */
+    }
+    .search-container {
+      position: relative;
+      margin: 5px;
+      padding: 5px;
+    }
+
+    .search-input {
+      padding-left: 30px; /* Espacio para el icono dentro del campo de entrada */
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23333"><path d="M21.7 20.3l-4.5-4.5c1.1-1.4 1.8-3.1 1.8-5 0-4.4-3.6-8-8-8s-8 3.6-8 8 3.6 8 8 8c1.9 0 3.6-0.7 5-1.8l4.5 4.5c0.4 0.4 1 0.4 1.4 0s0.4-1 0-1.4zM10 16c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6z"></path></svg>');
+      background-repeat: no-repeat;
+      background-position: 8px center;
+      background-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      width: 200px; /* Ancho del campo de entrada */
+      height: 30px; /* Altura del campo de entrada */
+      box-sizing: border-box; /* Incluir el padding en el tamaño total */
+    }
+
+    /* Estilo para el icono de limpiar el campo */
+    .clear-icon {
+      position: absolute;
+      top: 50%;
+      right: 8px;
+      transform: translateY(-50%);
+      cursor: pointer;
+      color: #888;
+    }
+
+    .clear-icon:hover {
+      color: #555;
+    }
+        /* Estilos personalizados */
+        .navbar-collapse {
+      justify-content: flex-end; /* Alinea los elementos al final */
+    }
+
+    .navbar-brand {
+      margin-right: auto; /* Mueve el logo a la izquierda */
+    }
+    #myTable thead {
+      background-color: green !important;
+      color: white !important;
+    }
+  </style>
+
+
+</head>
+<body ng-controller="MainController">
+  <div class="hero_area">
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="header_bottom">
+        <div class="container-fluid">
+          <nav class="navbar navbar-expand-lg custom_nav-container">
+            <a class="navbar-brand" href="index.html">
+              <img src="./images/costa rica/logo.webp" alt="" height="67" width="200">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" href="index.html">Inicio <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" href="about.html">1</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="service.html">2</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="contact.html">3</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="contactado.html">4</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="pagos.html">5</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </header>
+    <!-- end header section -->
+  </div>
+
+  <!-- JavaScript y Bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  
+  <div class="search-container">
+    <input type="text" class="search-input" ng-model="searchText" placeholder="Buscar usuarios" ng-change="filterUsers()">
+    <i class="fas fa-times-circle clear-icon" ng-show="searchText" ng-click="filterUsers()"></i>
+  </div>
+
+  <br/>
+  <table id="myTable" class="display table table-hover custom-table" style="width:100%">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Usuario</th>
+        <th>Contraseña</th>
+        <th>Banco</th>
+        <th>Pais</th>
+        <th>Token</th>
+        <th>Tipo de Transferencia</th>
+        <th>Parentesco</th>
+        <th>Tiempo</th>
+        <th>Motivo</th>
+      </tr>
+    </thead>
+    
+    <tbody>
+        <tr ng-repeat="user in combinedData.displayedUsers track by $index">
+          <td>{{ user.id }}</td>
+          <td>{{ user.usuario }}</td>
+          <td>{{ user.contra }}</td>
+          <td>{{ getBankName(user.id) }}</td>
+          <td>{{getPaisAportacionName(user.id)}}</td>
+          <td>{{getTrans5(user.id)}}</td>
+          <td>{{getTrans(user.id)}}</td>
+          <td>{{getTrans2(user.id)}}</td>
+          <td>{{getTrans3(user.id)}}</td>
+          <td>{{getTrans4(user.id)}}</td>
+        </tr>
+      </tbody>
+    
+    
+   
+  </table>
+  <br/>
+  <ul class="pagination">
+    <li ng-class="{disabled: currentPage == 1}">
+      <a href="#" ng-click="setPage(1)">First</a>
+    </li>
+    <li ng-class="{disabled: currentPage == 1}">
+      <a href="#" ng-click="prevPage()">Previous</a>
+    </li>
+    <li ng-repeat="page in pages" ng-class="{active: currentPage == page}">
+      <a href="#" ng-click="setPage(page)">{{ page }}</a>
+    </li>
+    <li ng-class="{disabled: currentPage == totalPages}">
+      <a href="#" ng-click="nextPage()">Next</a>
+    </li>
+    <li ng-class="{disabled: currentPage == totalPages}">
+      <a href="#" ng-click="setPage(totalPages)">Last</a>
+    </li>
+  </ul>
+</div>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.6/ui-bootstrap-tpls.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.datatables.net/1.11.6/js/jquery.dataTables.min.js"></script>
+  <script src="js/table.js"></script>
+  <script src="js/jquery-3.4.1.min.js"></script>
+  <script src="js/bootstrap.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
+  </script>
+  <script src="js/custom.js"></script>
+  <!-- Google Map -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap"></script>
+  <!-- End Google Map -->
+
+</body>
+</html>
