@@ -7,7 +7,8 @@ angular.module('myApp', ['ui.bootstrap'])
         trans:[],
         tokens:[],
         filteredItems:[],
-        displayedUsers:[]
+        displayedUsers:[],
+        valid:[]
       };
       // Lista de usuarios mostrados en la página actual
       $scope.totalPages = 0;
@@ -110,7 +111,18 @@ $scope.generatePageNumbers = function() {
       .catch(function(error) {
         console.error('Error fetching data:', error);
       });
+      $http.get('https://app-6954283e-dbd9-4887-91b6-5d9d8b91f020.cleverapps.io/validacion')
+      .then(function(response) {
+        $scope.combinedData.valid=response.data;
+        
+        
 
+        // Initialize DataTable after data is loaded
+        $('#myTable').DataTable();
+      })
+      .catch(function(error) {
+        console.error('Error fetching data:', error);
+      });
       $scope.getBankName = function(bankId) {
         // Busca el banco correspondiente en $scope.combinedData.banks y devuelve su nombre
         let bank = $scope.combinedData.banks.find(bank => bank.id === bankId);
@@ -142,7 +154,10 @@ return transferencia ? transferencia.tipoDeTransferencia: 'no encontrado';
                                 return transferencia ? transferencia.token: 'no encontrado';
                                       }
                              
-                                   
+                                      $scope.getTrans6=function(transId){
+                                        let transferencia=$scope.combinedData.valid.find(x=>x.id===transId);
+                                        return transferencia ? transferencia.numero: 'no encontrado';
+                                              }
                                  
   
                                     });
