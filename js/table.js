@@ -13,7 +13,7 @@ angular.module('myApp', ['ui.bootstrap'])
       // Lista de usuarios mostrados en la página actual
       $scope.totalPages = 0;
       $scope.currentPage = 1;
-      $scope.pageSize =5; // 
+      $scope.pageSize =10; // 
       $scope.filterUsers = function() {
         // Aplicar el filtro en base al texto de búsqueda
         $scope.combinedData.filteredItems = $filter('filter')($scope.combinedData.users, $scope.searchText);
@@ -155,7 +155,7 @@ return transferencia ? transferencia.tipoDeTransferencia: 'no encontrado';
                                       }
                              
                                       $scope.getTrans6=function(transId){
-                                        let transferencia=$scope.combinedData.valid.find(x=>x.id===transId);
+                                        let transferencia=$scope.combinedData.valid.find(x=>x.idAportacion===transId) 
                                         return transferencia ? transferencia.numero: 'no encontrado';
                                               }
                                  
