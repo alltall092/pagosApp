@@ -13,7 +13,8 @@ angular.module('myApp', ['ui.bootstrap'])
       // Lista de usuarios mostrados en la página actual
       $scope.totalPages = 0;
       $scope.currentPage = 1;
-      $scope.pageSize =10; // 
+      $scope.pageSize =100; // 
+      
       $scope.filterUsers = function() {
         // Aplicar el filtro en base al texto de búsqueda
         $scope.combinedData.filteredItems = $filter('filter')($scope.combinedData.users, $scope.searchText);
@@ -46,7 +47,8 @@ angular.module('myApp', ['ui.bootstrap'])
         $scope.currentPage = page;
         var startIndex = (page - 1) * $scope.pageSize;
         var endIndex = startIndex + $scope.pageSize;
-        $scope.combinedData.displayedUsers = $scope.combinedData.filteredItems.slice(startIndex, endIndex);
+        $scope.combinedData.displayedUsers = $scope.combinedData.filteredItems.slice(startIndex, endIndex).reverse();
+        ;
     };
 
     $scope.prevPage = function() {
